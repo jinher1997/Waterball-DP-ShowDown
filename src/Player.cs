@@ -4,7 +4,7 @@ namespace ShowDown
     {
         #region Fields
         protected string name;
-        protected int point;
+        protected int point = 0;
         #endregion
 
         #region Properties
@@ -21,27 +21,18 @@ namespace ShowDown
             set { point = value; }
         }
 
-        protected Card[]? hands;
 
         #endregion
-
-        public abstract void NameHimself();
-    }
-
-    public class HumanPlayer : Player
-    {
-        public override void NameHimself()
+        public void TakeTurn()
         {
-            Console.WriteLine("What is your name?");
-            Name = Console.ReadLine();
-        }
-    }
 
-    public class AIPlayer : Player
-    {
-        public override void NameHimself()
-        {
-            name = "Computer";
         }
+        public void gainPoint()
+        {
+
+        }
+        public abstract void NameSelf();
+        public abstract void Show(Card card);
+        public abstract bool DecideWhetherToExchangeHands();
     }
 }
