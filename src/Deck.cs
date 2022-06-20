@@ -3,6 +3,12 @@ namespace ShowDown
     public class Deck
     {
         protected Stack<Card> cards = new Stack<Card>();
+        
+        public int GetDeckCardLength()
+        {
+            return cards.Count;
+        }
+
         public Deck()
         {
             for (int i = 0; i < 4; i++)

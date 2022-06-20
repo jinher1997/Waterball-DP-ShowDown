@@ -4,6 +4,8 @@ namespace ShowDown
     {
         private Player[] players = new Player[4];
         private Deck deck;
+        private Round[] rounds = new Round[13];
+
         public ShowDown(Player[] players)
         {
             this.players = players;
@@ -12,8 +14,21 @@ namespace ShowDown
 
         public void Start()
         {
-            RequestPlayerNames();
+            RequestPlayersNameThemselves();
             deck.Shuffle();
+            DrawCardStage();
+            
+        }
+
+        void DrawCardStage()
+        {
+            for (int i = 0; i < rounds.Length; i++)
+            {
+                foreach (Player player in players)
+                {
+                    player.hand.cards.Add(deck.DrawCard());
+                }
+            }
         }
 
         public void TakeTurn(Player player)
@@ -28,14 +43,14 @@ namespace ShowDown
 
         public void GameOver()
         {
-            
+
         }
 
-        void RequestPlayerNames()
+        void RequestPlayersNameThemselves(int index = 0)
         {
-            for (int turnOfPlayers = 0; turnOfPlayers < players.Length; turnOfPlayers++)
+            for (int i = 0; i < players.Length; i++)
             {
-               players[turnOfPlayers].NameSelf();
+                players[i].NameSelf();
             }
         }
     }

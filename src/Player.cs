@@ -5,6 +5,10 @@ namespace ShowDown
         #region Fields
         protected string name;
         protected int point = 0;
+        private int exchangeHandsChance = 1;
+        public Hand hand = new Hand();
+        public Player? next;
+
         #endregion
 
         #region Properties
@@ -25,14 +29,22 @@ namespace ShowDown
         #endregion
         public void TakeTurn()
         {
-
+            // if (HaveChangeToExchangeHands()) if (DecideWhetherToExchangeHands());
+            Show();
         }
+
         public void gainPoint()
         {
-
+            point++;
         }
+
+        bool HaveChangeToExchangeHands()
+        {
+            return exchangeHandsChance == 1;
+        }
+
         public abstract void NameSelf();
-        public abstract void Show(Card card);
+        protected abstract Card Show();
         public abstract bool DecideWhetherToExchangeHands();
     }
 }

@@ -2,6 +2,6 @@ namespace ShowDown
 {
     public class Hand
     {
-        public Card[]? hands;
+        public List<Card> cards = new List<Card>();
     }
 }

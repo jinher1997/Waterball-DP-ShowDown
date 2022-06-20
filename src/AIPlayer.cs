@@ -9,12 +9,17 @@ namespace ShowDown
 
         public override void NameSelf()
         {
-            Name = "Computer";
+            var random = new Random();
+            Name = $"Computer{random.Next(1, 100)}";
         }
 
-        public override void Show(Card card)
+        protected override Card Show()
         {
-            throw new NotImplementedException();
+            var random = new Random();
+            int randomIndex = random.Next(0, hand.cards.Count);
+            var temp = hand.cards[randomIndex];
+            hand.cards.RemoveAt(randomIndex);
+            return temp;
         }
     }
 }
