@@ -13,5 +13,14 @@ namespace ShowDown
         {
             return $"{Rank} of {Suit}";
         }
+
+        // public int CompareTo(Card card)
+        // {
+        //     // Compare the rank if ranks are equal then compare the suit
+        //     if(Rank == card.Rank)
+        //     {
+
+        //     }
+        // }
     }
 }

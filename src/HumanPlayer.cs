@@ -4,7 +4,17 @@ namespace ShowDown
     {
         public override bool DecideWhetherToExchangeHands()
         {
-            throw new NotImplementedException();
+            //Ask player to decide whether to exchangeHands
+            Console.WriteLine("Do you want to exchange hands? (y/n)");
+            string answer = Console.ReadLine();
+            if (answer == "y")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override void NameSelf()
@@ -24,7 +34,7 @@ namespace ShowDown
             Console.WriteLine("What card do you want to show?");
             int index = int.Parse(Console.ReadLine());
             //Tell user what card they selected
-            Console.WriteLine($"You showed {hand.cards[index]}");
+            Console.WriteLine($"{Name} showed {hand.cards[index]}");
             var temp = hand.cards[index];
             hand.cards.RemoveAt(index);
             return temp;

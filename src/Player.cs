@@ -27,10 +27,10 @@ namespace ShowDown
 
 
         #endregion
-        public void TakeTurn()
+        public Card TakeTurn()
         {
             // if (HaveChangeToExchangeHands()) if (DecideWhetherToExchangeHands());
-            Show();
+            return Show();
         }
 
         public void gainPoint()

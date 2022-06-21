@@ -4,7 +4,17 @@ namespace ShowDown
     {
         public override bool DecideWhetherToExchangeHands()
         {
-            throw new NotImplementedException();
+            //randomly decide whether to exchange hands
+            Random random = new Random();
+            int randomNumber = random.Next(0, 2);
+            if (randomNumber == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override void NameSelf()
@@ -18,6 +28,7 @@ namespace ShowDown
             var random = new Random();
             int randomIndex = random.Next(0, hand.cards.Count);
             var temp = hand.cards[randomIndex];
+            Console.WriteLine($"{Name} showed {hand.cards[randomIndex]}");
             hand.cards.RemoveAt(randomIndex);
             return temp;
         }

@@ -17,7 +17,13 @@ namespace ShowDown
             RequestPlayersNameThemselves();
             deck.Shuffle();
             DrawCardStage();
-            
+            StartRound();
+        }
+
+        void StartRound(int roundNumber = 0)
+        {
+            rounds[roundNumber] = new Round();
+            rounds[roundNumber].Execute(players);
         }
 
         void DrawCardStage()
@@ -46,7 +52,7 @@ namespace ShowDown
 
         }
 
-        void RequestPlayersNameThemselves(int index = 0)
+        void RequestPlayersNameThemselves()
         {
             for (int i = 0; i < players.Length; i++)
             {
