@@ -32,7 +32,7 @@ namespace ShowDown
             var exchangeHands = new ExchangeHands(this  , randomPlayer);
         }
 
-        protected override Card Show()
+        public override Card Show()
         {
             var random = new Random();
             int randomIndex = random.Next(0, hand.cards.Count);

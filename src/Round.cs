@@ -1,3 +1,4 @@
+using System;
 namespace ShowDown
 {
     public class Round
@@ -12,21 +13,19 @@ namespace ShowDown
                 currentPlayer.TakeTurnToDecideWhetherToExchangeHands(otherPlayers);
             }
 
-            //Compare all cards and determine the winner
-            
-            // int highestCardIndex;
-            // for (int cardIndex = 0; cardIndex < length; cardIndex++)
-            // {
-            //     highestCardIndex = cardIndex;
-            //     for (int i = cardIndex + 1; i < length; i++)
-            //     {
-            //         if (cards[i].CompareTo(cards[highestCardIndex]) > 0)
-            //         {
-            //             highestCardIndex = i;
-            //         }
-            //     }
+            for (int playerIndex = 0; playerIndex < players.Length; playerIndex++)
+            {
+                Player currentPlayer = players[playerIndex];
+                cards[playerIndex] = currentPlayer.Show();
+            }
 
-            // }
+            //Compare all cards and determine the winner
+            int highestCardIndex = 0;
+            for (int cardIndex = 1; cardIndex < cards.Length; cardIndex++)
+            {
+                highestCardIndex = Array.IndexOf(cards, cards[highestCardIndex].CompareTo(cards[cardIndex]));
+            }
+            players[highestCardIndex].GainPoint();
         }
     }
 }

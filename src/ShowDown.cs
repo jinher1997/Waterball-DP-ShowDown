@@ -18,6 +18,7 @@ namespace ShowDown
             deck.Shuffle();
             DrawCardStage();
             ExecuteRounds();
+            GameOver();
         }
 
         void DrawCardStage()
@@ -39,6 +40,24 @@ namespace ShowDown
                 rounds[i] = new Round();
                 rounds[i].Execute(players);
             }
+        }
+
+        void GameOver()
+        {
+            Console.WriteLine($"Winner is {DetermineWinner()}");
+        }
+
+        Player DetermineWinner()
+        {
+            var winner = players[0];
+            for (int i = 1; i < players.Length; i++)
+            {
+                if(players[i].Point > winner.Point)
+                {
+                    winner = players[i];
+                }
+            }
+            return winner;
         }
 
         void RequestPlayersNameThemselves()

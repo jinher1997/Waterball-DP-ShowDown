@@ -43,7 +43,7 @@ namespace ShowDown
             exchangee.hand = temp;
         }
         
-        public void gainPoint()
+        public void GainPoint()
         {
             point++;
         }
@@ -54,7 +54,7 @@ namespace ShowDown
         }
 
         public abstract void NameSelf();
-        protected abstract Card Show();
+        public abstract Card Show();
         public abstract bool DecideWhetherToExchangeHands();
     }
 }

@@ -37,7 +37,7 @@ namespace ShowDown
             var exchangeHands = new ExchangeHands(this, exchangee);
         }
 
-        protected override Card Show()
+        public override Card Show()
         {
             //Print out all cards in hand and ask user to select a card with index
             Console.WriteLine("Your cards are:");
