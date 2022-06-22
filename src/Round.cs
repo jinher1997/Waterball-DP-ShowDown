@@ -7,13 +7,13 @@ namespace ShowDown
             Card[] cards = new Card[4];
             for (int i = 0; i < players.Length; i++)
             {
-                Player player = players[i];
-                player.TakeTurn();
+                Player currentPlayer = players[i];
+                var otherPlayers = players.Where(player => player != currentPlayer).ToArray();
+                currentPlayer.TakeTurnToDecideWhetherToExchangeHands(otherPlayers);
             }
 
             //Compare all cards and determine the winner
             
-
             // int highestCardIndex;
             // for (int cardIndex = 0; cardIndex < length; cardIndex++)
             // {

@@ -23,6 +23,15 @@ namespace ShowDown
             Name = $"Computer{random.Next(1, 100)}";
         }
 
+        protected override void ExchangeHands(Player[] otherPlayers)
+        {
+            //choose a random player to exchange hands with
+            Random random = new Random();
+            int randomPlayerIndex = random.Next(0, otherPlayers.Length);
+            var randomPlayer = otherPlayers[randomPlayerIndex];
+            var exchangeHands = new ExchangeHands(this  , randomPlayer);
+        }
+
         protected override Card Show()
         {
             var random = new Random();

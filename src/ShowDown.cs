@@ -17,13 +17,7 @@ namespace ShowDown
             RequestPlayersNameThemselves();
             deck.Shuffle();
             DrawCardStage();
-            StartRound();
-        }
-
-        void StartRound(int roundNumber = 0)
-        {
-            rounds[roundNumber] = new Round();
-            rounds[roundNumber].Execute(players);
+            ExecuteRounds();
         }
 
         void DrawCardStage()
@@ -37,19 +31,14 @@ namespace ShowDown
             }
         }
 
-        public void TakeTurn(Player player)
+        void ExecuteRounds()
         {
-
-        }
-
-        public void PrintShowCards()
-        {
-
-        }
-
-        public void GameOver()
-        {
-
+            for (int i = 0; i < rounds.Length; i++)
+            {
+                Console.WriteLine($"Round :{i + 1}");
+                rounds[i] = new Round();
+                rounds[i].Execute(players);
+            }
         }
 
         void RequestPlayersNameThemselves()

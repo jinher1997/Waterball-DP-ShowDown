@@ -5,7 +5,7 @@ namespace ShowDown
         public override bool DecideWhetherToExchangeHands()
         {
             //Ask player to decide whether to exchangeHands
-            Console.WriteLine("Do you want to exchange hands? (y/n)");
+            Console.WriteLine($"{Name} , Do you want to exchange hands? (y/n)");
             string answer = Console.ReadLine();
             if (answer == "y")
             {
@@ -21,6 +21,20 @@ namespace ShowDown
         {
             Console.WriteLine("What is your name?");
             Name = Console.ReadLine();
+        }
+
+        protected override void ExchangeHands(Player[] otherPlayers)
+        {
+            //Print out other players name.
+            for (int i = 0; i < otherPlayers.Length; i++)
+            {
+                Console.WriteLine($"{i}. {otherPlayers[i].Name}");
+            }
+            //Ask player to decide which player to exchangeHands
+            Console.WriteLine("Which player that you want to exchange hands with?");
+            int index = int.Parse(Console.ReadLine());
+            var exchangee = otherPlayers[index];
+            var exchangeHands = new ExchangeHands(this, exchangee);
         }
 
         protected override Card Show()
