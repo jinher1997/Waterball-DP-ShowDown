@@ -7,7 +7,6 @@ namespace ShowDown
         protected int point = 0;
         private int exchangeHandsChance = 1;
         public Hand hand = new Hand();
-        public Player? next;
         public Action? onTakeTurn;
 
         #endregion
@@ -31,18 +30,21 @@ namespace ShowDown
         public void TakeTurnToDecideWhetherToExchangeHands(Player[] otherPlayers)
         {
             onTakeTurn?.Invoke();
-            if (HaveChanceToExchangeHands()) if (DecideWhetherToExchangeHands()) ExchangeHands(otherPlayers);
+            if (HaveChanceToExchangeHands())
+                if (DecideWhetherToExchangeHands())
+                    exchangeHandsChance --;
+                    ExchangeHands(otherPlayers);
         }
 
         protected abstract void ExchangeHands(Player[] otherPlayers);
 
-        public void GiveBackHandsTo(Player exchangee)
+        public void GiveBackHandsTo(Player personOfferedForExchange)
         {
             var temp = hand;
-            hand = exchangee.hand;
-            exchangee.hand = temp;
+            hand = personOfferedForExchange.hand;
+            personOfferedForExchange.hand = temp;
         }
-        
+
         public void GainPoint()
         {
             point++;
@@ -50,7 +52,7 @@ namespace ShowDown
 
         bool HaveChanceToExchangeHands()
         {
-            return exchangeHandsChance == 1;
+            return exchangeHandsChance > 0;
         }
 
         public abstract void NameSelf();
