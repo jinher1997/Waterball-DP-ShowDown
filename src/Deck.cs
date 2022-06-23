@@ -22,14 +22,14 @@ namespace ShowDown
 
         public void Shuffle()
         {
-            Random rnd = new Random();
+            Random random = new Random();
             var newCards = cards.ToList();
             for (int i = 0; i < newCards.Count; i++)
             {
-                int j = rnd.Next(newCards.Count);
+                int randomIndex = random.Next(newCards.Count);
                 Card temp = newCards[i];
-                newCards[i] = newCards[j];
-                newCards[j] = temp;
+                newCards[i] = newCards[randomIndex];
+                newCards[randomIndex] = temp;
             }
             cards = new Stack<Card>(newCards);
         }

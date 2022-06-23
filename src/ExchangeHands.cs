@@ -3,11 +3,11 @@ namespace ShowDown
     public class ExchangeHands
     {
         private Player exchanger;
-        private Player exchangee;
-        public ExchangeHands(Player exchanger ,Player exchangee)
+        private Player personOfferedForExchange;
+        public ExchangeHands(Player exchanger ,Player personOfferedForExchange)
         {
             this.exchanger = exchanger;
-            this.exchangee = exchangee;
+            this.personOfferedForExchange = personOfferedForExchange;
             exchanger.onTakeTurn += CountDown;
         }
         private int countdown = 3;
@@ -17,7 +17,7 @@ namespace ShowDown
             if(countdown == 0)
             {
                 exchanger.onTakeTurn -= CountDown;
-                exchanger.GiveBackHandsTo(exchangee);
+                exchanger.GiveBackHandsTo(personOfferedForExchange);
             }
         }
     }

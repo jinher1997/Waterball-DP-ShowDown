@@ -33,8 +33,8 @@ namespace ShowDown
             //Ask player to decide which player to exchangeHands
             Console.WriteLine("Which player that you want to exchange hands with?");
             int index = int.Parse(Console.ReadLine());
-            var exchangee = otherPlayers[index];
-            var exchangeHands = new ExchangeHands(this, exchangee);
+            var personOfferedForExchange = otherPlayers[index];
+            var exchangeHands = new ExchangeHands(this, personOfferedForExchange);
         }
 
         public override Card Show()

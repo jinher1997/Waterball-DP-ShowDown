@@ -27,9 +27,9 @@ namespace ShowDown
         {
             //choose a random player to exchange hands with
             Random random = new Random();
-            int randomPlayerIndex = random.Next(0, otherPlayers.Length);
-            var randomPlayer = otherPlayers[randomPlayerIndex];
-            var exchangeHands = new ExchangeHands(this  , randomPlayer);
+            int personOfferedForExchangeIndex = random.Next(0, otherPlayers.Length);
+            var personOfferedForExchange = otherPlayers[personOfferedForExchangeIndex];
+            var exchangeHands = new ExchangeHands(this  , personOfferedForExchange);
         }
 
         public override Card Show()
